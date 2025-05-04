@@ -77,8 +77,12 @@ A smart video streaming platform like Netflix, powered by ChatGPT, where users c
 -create react app
 -configured tailwind css in our app
 -   Header
+- Routing
 - Building Login form
 -create signup form
+- Form validation
+-UseRef Hook
+
 
 # features
 -Login/Sign-up page
