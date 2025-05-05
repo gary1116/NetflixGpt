@@ -83,6 +83,7 @@ A smart video streaming platform like Netflix, powered by ChatGPT, where users c
 - Form validation
 -UseRef Hook
 
+firebase:-https://console.firebase.google.com/project/netflixgpt-1812e/overview
 
 # features
 -Login/Sign-up page
