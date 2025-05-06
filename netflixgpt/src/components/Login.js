@@ -1,14 +1,18 @@
 import React, { useState, useRef } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import Header from './Header'
 import background from '../utils/images/background.jpg'
 import { checkValidData } from "../utils/validate";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+
 const Login = () => {
 
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [isErrMessage, setIsErrorMessage] = useState(null);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const name=useRef(null);
     const email = useRef(null);
@@ -33,7 +37,25 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     // Signed up 
+                    // in this time displayName is not present with user 
                     const user = userCredential.user;
+
+                    // updating profile 
+                    updateProfile(auth.currentUser, {
+                        displayName: name.current.value
+                      }).then(() => {
+                        // Profile updated!
+                        // gets the updated value from backend
+                        const {displayName} = auth.currentUser;
+                    dispatch(addUser({ displayName: displayName }));
+                    navigate("/browse");                
+                      }).catch((error) => {
+                        // An error occurred
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        setIsErrorMessage(errorCode + " - " + errorMessage);
+                      });
+
                     console.log(user);
                     navigate("/browse");
                 })
