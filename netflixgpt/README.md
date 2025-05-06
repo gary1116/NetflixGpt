@@ -74,14 +74,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 A smart video streaming platform like Netflix, powered by ChatGPT, where users can simply type natural language queries like 'funny Indian movie' and instantly get a curated list of available titles that match their request.
 
 
--create react app
--configured tailwind css in our app
--   Header
+- create react app
+- configured tailwind css in our app
+- Header
 - Routing
 - Building Login form
--create signup form
+- create signup form
 - Form validation
--UseRef Hook
+- UseRef Hook
+- firebase setup
+- deploying app in production
+- create SignUp User Account
 
 firebase:-https://console.firebase.google.com/project/netflixgpt-1812e/overview
 
