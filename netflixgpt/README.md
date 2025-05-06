@@ -85,6 +85,8 @@ A smart video streaming platform like Netflix, powered by ChatGPT, where users c
 - firebase setup
 - deploying app in production
 - create SignUp User Account
+- setup redux store
+- added userSlice and provided it to whole app in app.js
 
 firebase:-https://console.firebase.google.com/project/netflixgpt-1812e/overview
 

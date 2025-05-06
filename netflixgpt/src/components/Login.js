@@ -4,10 +4,13 @@ import { auth } from '../utils/firebase';
 import Header from './Header'
 import background from '../utils/images/background.jpg'
 import { checkValidData } from "../utils/validate";
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
 
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [isErrMessage, setIsErrorMessage] = useState(null);
+    const navigate = useNavigate();
+    const name=useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
@@ -32,7 +35,7 @@ const Login = () => {
                     // Signed up 
                     const user = userCredential.user;
                     console.log(user);
-                    // ...
+                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -48,6 +51,8 @@ const Login = () => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log(user);
+                    navigate("/browse");
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -67,7 +72,7 @@ const Login = () => {
             </div>
             <form onSubmit={(e) => e.preventDefault()} className='flex flex-col items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-8 border-double border-gray-400 hover:border-gray-600  bg-black bg-opacity-70 p-10'>
                 <h1 className='font-bold text-white'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
-                {!isSignInForm && <input type="text" placeholder='Full Name' className=' p-2 m-2  w-64 rounded-lg' />}
+                {!isSignInForm && <input ref={name}type="text" placeholder='Full Name' className=' p-2 m-2  w-64 rounded-lg' />}
                 <input ref={email} type="text" placeholder='Email Address' className=' p-2 m-2  w-64 rounded-lg' />
                 <input ref={password} type="password" placeholder='password' className='p-2 m-2  w-64 rounded-lg' />
                 {<p className='font-bold text-red-500'>{isErrMessage}</p>}
