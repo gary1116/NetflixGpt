@@ -89,6 +89,8 @@ A smart video streaming platform like Netflix, powered by ChatGPT, where users c
 - added userSlice and provided it to whole app in app.js
 - implemented Sign up
 - updated profile
+- bugFix: signUp user displayName
+- bugFix: if the user is not logged in redirect it to "/" page and vice versa
 
 firebase:-https://console.firebase.google.com/project/netflixgpt-1812e/overview
 

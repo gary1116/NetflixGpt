@@ -4,7 +4,6 @@ import { auth } from '../utils/firebase';
 import Header from './Header'
 import background from '../utils/images/background.jpg'
 import { checkValidData } from "../utils/validate";
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
@@ -13,7 +12,6 @@ const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [isErrMessage, setIsErrorMessage] = useState(null);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const name=useRef(null);
     const email = useRef(null);
     const password = useRef(null);
@@ -47,8 +45,7 @@ const Login = () => {
                         // Profile updated!
                         // gets the updated value from backend
                         const {displayName} = auth.currentUser;
-                    dispatch(addUser({ displayName: displayName }));
-                    navigate("/browse");                
+                        dispatch(addUser({ displayName: displayName }));              
                       }).catch((error) => {
                         // An error occurred
                         const errorCode = error.code;
@@ -57,7 +54,6 @@ const Login = () => {
                       });
 
                     console.log(user);
-                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -72,8 +68,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log(user);
-                    navigate("/browse");
 
                 })
                 .catch((error) => {
