@@ -95,8 +95,11 @@ A smart video streaming platform like Netflix, powered by ChatGPT, where users c
 - we will use tmdb site for movie apis inorder to use it you need to login in tmdb site :-https://www.themoviedb.org/
   after logging in you need to go to edit profile and from there you need to go to API section and create an api after that you can go in documentation section and go to MOVIE LISTS section and under there go to Now Playing section which is a get method there on the language section click javascrpt and sav the const options part in a constants file min is saved under utils/constants and the api is called in browse file under src.
 
+- build main component
 - created movie slice, updated appstore 
 - added videoTitle and videoBackground and made mainContainer for our    app and made video auto play 
+
+- build secondary component
 
 firebase:-https://console.firebase.google.com/project/netflixgpt-1812e/overview
 
