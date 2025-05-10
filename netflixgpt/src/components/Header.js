@@ -52,7 +52,7 @@ const Header = () => {
     <div className="flex justify-between items-center px-8  w-full fixed top-0 z-10">
       <img src={Logo} alt="Logo" className="w-32" />
       {user && (<div className="flex items-center gap-2">
-        <span>Hi {user?.displayName}!</span>
+        <span className="text-white">Hi {user?.displayName}!</span>
         <div className="relative group">
           <button onClick={() => { handleSignOut() }}>
             <img src={userIcon} alt="User Icon" className="w-10 h-10 rounded-full" />
