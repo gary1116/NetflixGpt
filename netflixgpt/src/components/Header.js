@@ -7,6 +7,7 @@ import Logo from '../utils/images/Logo.png';
 import userIcon from '../utils/images/user_Icon.png';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import {toggleGptSearchView} from "../utils/gptSlice"
 
 
 const Header = () => {
@@ -14,6 +15,12 @@ const Header = () => {
   const user = useSelector(store => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const showGptSearch = useSelector(store => store.gpt.showGptSearch)
+
+  const handleGptClick=()=>{
+    // toggle GPT Search button
+    dispatch(toggleGptSearchView());
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -49,9 +56,10 @@ const Header = () => {
   }
 
   return (
-    <div className="flex justify-between items-center px-8  w-full fixed top-0 z-10">
+    <div className="flex justify-between items-center px-8  w-full absolute top-0 z-10">
       <img src={Logo} alt="Logo" className="w-32" />
       {user && (<div className="flex items-center gap-2">
+        <button className={!showGptSearch ? "p-2 m-2 border-2 hover:bg-opacity-20 hover:text-white bg-white text-xs rounded-md": "p-2 m-2 border-2 hover:bg-opacity-20 hover:text-black bg-red-600 text-xs rounded-md"} onClick={()=>{handleGptClick()}}>{!showGptSearch ? "GPT Search": "NetflixGpt"}</button>
         <span className="text-white">Hi {user?.displayName}!</span>
         <div className="relative group">
           <button onClick={() => { handleSignOut() }}>

@@ -99,6 +99,7 @@ A smart video streaming platform like Netflix, powered by ChatGPT, where users c
 - created movie slice, updated appstore 
 - added videoTitle and videoBackground and made mainContainer for our app and made video auto play 
 - completed secondary container added multiple custom hooks for other genre and build movieList and movieCard, used image_cdn for movie logo and styled browse page
+- now building gpt search feature
 
 
 firebase:-https://console.firebase.google.com/project/netflixgpt-1812e/overview
