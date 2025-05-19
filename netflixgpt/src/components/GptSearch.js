@@ -7,7 +7,7 @@ import background from "../utils/images/background.jpg"
 const GptSearch = () => {
   return (
     <div>
-      <div className="absolute h-screen">
+      <div className="absolute h-screen w-screen">
         <img src={background} alt="background image" className='h-full w-full object-cover' />   
       </div>
       <GptSearchBar />

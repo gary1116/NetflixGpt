@@ -8,6 +8,8 @@ import userIcon from '../utils/images/user_Icon.png';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {toggleGptSearchView} from "../utils/gptSlice"
+import {changeLanguage} from "../utils/configSlice"
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
 
 
 const Header = () => {
@@ -40,10 +42,13 @@ const Header = () => {
         navigate("/");
       }
     });
-
     // unsubscribe will be called when component unmounts
     return () => unsubscribe();
   }, []);
+
+  const handleLangChange=(e)=>{
+    dispatch(changeLanguage(e.target.value))
+  }
 
   const handleSignOut = () => {
 
@@ -59,6 +64,11 @@ const Header = () => {
     <div className="flex justify-between items-center px-8  w-full absolute top-0 z-10">
       <img src={Logo} alt="Logo" className="w-32" />
       {user && (<div className="flex items-center gap-2">
+        {showGptSearch&&<select onChange={handleLangChange}>
+          {SUPPORTED_LANGUAGES.map(language=>
+          <option value={language.identifier}>{language.name}</option>
+          )}
+        </select>}
         <button className={!showGptSearch ? "p-2 m-2 border-2 hover:bg-opacity-20 hover:text-white bg-white text-xs rounded-md": "p-2 m-2 border-2 hover:bg-opacity-20 hover:text-black bg-red-600 text-xs rounded-md"} onClick={()=>{handleGptClick()}}>{!showGptSearch ? "GPT Search": "NetflixGpt"}</button>
         <span className="text-white">Hi {user?.displayName}!</span>
         <div className="relative group">
